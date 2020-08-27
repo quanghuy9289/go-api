@@ -61,6 +61,7 @@ func NewServer() *Server {
 
 // Run Run the web server
 func (s *Server) Run() {
+	logger.Infof("Server is running...")
 	r := gin.Default()
 
 	// register global middleware
