@@ -1,0 +1,37 @@
+scalar Time
+
+# Types
+type Stock {
+  id: ID!
+  code: String!
+  description: String!
+}
+
+# Input Types
+input StockInput {
+  code: String!
+  description: String!
+}
+
+input QueryStock {
+  code: String
+  description: String
+}
+
+# List Types
+type Stocks {
+  count: Int! # You want to return count for a grid for example
+  list: [Stock!]! # that is why we need to specify the stocks object this way
+}
+
+# Define mutations here
+type Mutation {
+  createStock(input: StockInput!): Stock!
+  updateStock(id: ID!, input: StockInput!): Stock!
+  deleteStock(id: ID!): Boolean!
+}
+
+# Define queries here
+type Query {
+  stocks(input: QueryStock!): Stocks!
+}

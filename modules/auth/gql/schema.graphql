@@ -1,0 +1,65 @@
+# Types
+
+type LoginResult {
+  authtoken: String!
+  user: UserOutput!
+}
+
+type RegisterResult {
+  id: ID!
+  email: String!
+  fullname: String!
+  nickname: String!
+  avatarBase64: String!
+  companyName: String!
+  phoneNo: String!
+  faxNo: String!
+  website: String!
+  streetAddress: String!
+  inUseDatabase: String!
+}
+
+type UserOutput {
+  id: ID!
+  email: String!
+  phoneNumber: String!
+  fullname: String!
+  nickname: String!
+  avatarBase64: String!
+  roleID: String!
+  startDate: Int
+  minDailyUnitPointsRequirement: Float
+  standardNumberOfWorkingDaysPerWeek: Float
+  config: String!
+}
+
+# Input
+input RegisterInput {
+  email: String!
+  fullname: String!
+  nickname: String!
+  password: String!
+  avatarBase64: String!
+  companyName: String!
+  phoneNo: String!
+  faxNo: String!
+  website: String!
+  streetAddress: String!
+}
+
+# Input
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+# Define mutations here
+type Mutation {
+  register(input: RegisterInput!): RegisterResult!
+  login(input: LoginInput!): LoginResult!
+}
+
+# Define queries here
+type Query {
+  sampleAuth(input: String!): Boolean!
+}

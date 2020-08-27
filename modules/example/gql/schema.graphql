@@ -1,0 +1,37 @@
+scalar Time
+
+# Types
+type Example {
+  id: ID!
+  code: String!
+  description: String!
+}
+
+# Input Types
+input ExampleInput {
+  code: String!
+  description: String!
+}
+
+input QueryExample {
+  code: String
+  description: String
+}
+
+# List Types
+type Examples {
+  count: Int! # You want to return count for a grid for example
+  list: [Example!]! # that is why we need to specify the examples object this way
+}
+
+# Define mutations here
+type Mutation {
+  createExample(input: ExampleInput!): Example!
+  updateExample(id: ID!, input: ExampleInput!): Example!
+  deleteExample(id: ID!): Boolean!
+}
+
+# Define queries here
+type Query {
+  examples(input: QueryExample!): Examples!
+}

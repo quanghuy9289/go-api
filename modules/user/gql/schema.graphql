@@ -1,0 +1,99 @@
+scalar Time
+
+# Types
+type User {
+  id: ID!
+  email: String!
+  phoneNumber: String!
+  fullname: String!
+  nickname: String!
+  avatarBase64: String!
+  roleID: String!
+  startDate: Int
+  minDailyUnitPointsRequirement: Float
+  standardNumberOfWorkingDaysPerWeek: Float
+  config: String!
+  authenticationTokens: [AuthenticationToken!]!
+  inUseDatabase: String!
+}
+
+type AuthenticationToken {
+  token: ID!
+  expiredOn: Int!
+}
+
+# Input Types
+input UserInput {
+  email: String!
+  fullname: String!
+  nickname: String!
+  password: String!
+  avatarBase64: String!
+  roleID: String!
+  inUseDatabase: String!
+}
+
+# Input Types
+input UserInfo {
+  email: String!
+  fullname: String!
+  nickname: String!
+  avatarBase64: String!
+}
+
+input QueryUser {
+  email: String!
+}
+
+input RegistrationInput {
+  companyName: String!
+  phoneNo: String!
+  faxNo: String!
+  website: String!
+  streetAddress: String!
+}
+
+input DatabaseInput {
+  registrationId: Int!
+  expiryDate: Int!
+  databaseName: String!
+}
+
+# List Types
+type Users {
+  count: Int! # You want to return count for a grid for example
+  list: [User!]! # that is why we need to specify the users object this way
+}
+
+type Registration {
+  registrationId: Int!
+  companyName: String!
+  phoneNo: String!
+  faxNo: String!
+  website: String!
+  streetAddress: String!
+  database: Database!
+}
+
+type Database {
+  databaseId: Int!
+  registrationId: Int!
+  expiryDate: Int!
+  databaseName: String!
+}
+
+# Define mutations here
+type Mutation {
+  createUser(input: UserInput!): User!
+  updateUser(id: ID!, input: UserInfo!): User!
+  deleteUser(id: ID!): User!
+  logout: Boolean!
+  logoutAll: Boolean!
+  createNewRegistration(input: RegistrationInput!): Registration!
+  createNewDatabase(input: DatabaseInput!): Database!
+}
+
+# Define queries here
+type Query {
+  users(input: QueryUser!): Users!
+}
