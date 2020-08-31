@@ -21,7 +21,7 @@ pipeline {
                sh 'go mod download'
                sh 'ls'
                // Build the app.
-               sh 'go run ./script/build'
+               sh 'go run ./scripts/build'
            }
        }
        stage('Test') {
