@@ -1,7 +1,7 @@
 # This is k8s deployment configure file that deploy all postgres and go-api service to k8s cluster
 ---
 # postgres secret variable to inject into deployed container
-apiVersion: apps/v1
+apiVersion: v1
 kind: Secret
 metadata:
   name: postgres-secret
@@ -19,7 +19,7 @@ stringData: # We dont need to worry about converting to base64
 
 ---
 # Persisten Volume to contain postgres db
-apiVersion: apps/v1
+apiVersion: v1
 kind: PersistentVolume # Create a PV
 metadata:
   name: postgres-pv-volume
@@ -38,7 +38,7 @@ spec:
 
 ---
 # Persistent Volume Claim to request data from Persistent Volumn above "postgres-pv-volume"
-apiVersion: apps/v1
+apiVersion: v1
 kind: PersistentVolumeClaim # Create a PersistentVolumeClaim to request a PersistentVolume storage
 metadata: # Claim name and labels
   name: postgres-pv-claim
@@ -93,7 +93,7 @@ spec:
 
 ---
 # Postgres service to expose postgres application
-apiVersion: apps/v1 # API version
+apiVersion: v1 # API version
 kind: Service # Type of kubernetes resource
 metadata:
   name: fullstack-postgres # Name of the resource
@@ -138,7 +138,7 @@ spec:
 
 ---
 # Go API service
-apiVersion: apps/v1
+apiVersion: v1
 kind: Service # Type of the kubernetes resource
 metadata:
   name: go-api # Name of the Kubernetes resource
