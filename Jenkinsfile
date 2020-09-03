@@ -19,7 +19,6 @@ pipeline {
                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/go-api'
                // download dependencies
                sh 'go mod download'
-               sh 'ls'
                // Build the app.
                sh 'go run ./scripts/build'
            }

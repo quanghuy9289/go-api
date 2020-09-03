@@ -127,7 +127,7 @@ spec:
     spec: # Spec for the container which will run in the Pod
       containers:
         - name: go-api
-          image: quanghuy9289/go-api # The image we are getting from dockerhub
+          image: quanghuy9289/go-api:1.0.3 # The image we are getting from dockerhub
           imagePullPolicy: IfNotPresent # If we have not pulled it before, get it from dockerhub
           ports:
             - name: http
@@ -152,3 +152,4 @@ spec:
     - name: http
       port: 7777
       targetPort: 7777
+      nodePort: 32000

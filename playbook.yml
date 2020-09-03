@@ -1,14 +1,8 @@
 - hosts: localhost
   tasks:
-    - name: Deploy the service
+    - name: Deploy k8s application
       k8s:
         state: present
-        definition: ""
+        src: go-postgres-k8s-deploy.yml
         validate_certs: no
         namespace: default
-    - name: Deploy the application
-      k8s:
-        state: present
-        validate_certs: no
-        namespace: default
-        definition: "" # -> inject definition of deployment and service through params/variable in ansible script
