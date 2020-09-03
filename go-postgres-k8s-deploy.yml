@@ -152,4 +152,3 @@ spec:
     - name: http
       port: 7777
       targetPort: 7777
-      nodePort: 32000
